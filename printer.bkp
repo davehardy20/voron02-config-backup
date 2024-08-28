@@ -1,0 +1,39 @@
+[include mainsail.cfg]
+[include ./boards/generic-bigtreetech-voronv02.cfg]
+#[include ./boards/ebb36.cfg]
+
+# host MCU service is preinstalled and ready to use with:
+[mcu CB1]
+serial: /tmp/klipper_host_mcu
+
+[mcu]
+#serial: /dev/serial/by-id/usb-Klipper_stm32g0b1xx_1C0014001450415833323520-if00
+serial: /dev/serial/by-id/usb-Klipper_stm32f042x6_180013001943303358333420-if00
+
+#[mcu ebb36]
+#canbus_uuid=7238a219eba3
+
+[printer]
+kinematics: corexy
+max_velocity: 500
+max_accel: 11000
+max_z_velocity: 15
+max_z_accel: 45
+square_corner_velocity: 6.0
+
+[temperature_sensor MANTA]
+sensor_type: temperature_mcu
+sensor_mcu: mcu
+min_temp: 0
+max_temp: 100
+
+[temperature_sensor EBB36]
+sensor_type: temperature_mcu
+sensor_mcu: ebb36
+min_temp: 0
+max_temp: 100
+
+[temperature_sensor CB1]
+sensor_type: temperature_host
+min_temp: 10
+max_temp: 100
